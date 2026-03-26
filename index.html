@@ -1,142 +1,555 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>My CV</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Draco is free PSD &amp; HTML template by @afnizarnur">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/kube.min.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/custom.min.css" />
-    <link rel="shortcut icon" href="img/favicon.png" />
-	<link href='http://fonts.googleapis.com/css?family=Playfair+Display+SC:700' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-	<style>
-		.intro h1:before {
-			/* Edit this with your name or anything else */
-			content: 'ARIEF';
-		}
-	</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio — Backend & DevOps Engineer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            mono:    ['DM Mono', 'monospace'],
+            body:    ['DM Sans', 'sans-serif'],
+          },
+          colors: {
+            ink:   '#0f0f0f',
+            paper: '#f5f4f0',
+            sage:  '#22c55e',
+            muted: '#6b6b6b',
+            line:  '#e2e2e0',
+          },
+          animation: {
+            'fade-up':   'fadeUp 0.6s ease forwards',
+            'fade-in':   'fadeIn 0.5s ease forwards',
+            'slide-in':  'slideIn 0.5s ease forwards',
+          },
+          keyframes: {
+            fadeUp:  { '0%': { opacity: 0, transform: 'translateY(24px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+            fadeIn:  { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
+            slideIn: { '0%': { opacity: 0, transform: 'translateX(-16px)' }, '100%': { opacity: 1, transform: 'translateX(0)' } },
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #f5f4f0; color: #0f0f0f; font-family: 'DM Sans', sans-serif; }
+
+    /* nav underline hover */
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #22c55e; transition: width 0.25s ease; }
+    .nav-link:hover::after { width: 100%; }
+
+    /* card hover */
+    .card-hover { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.10); }
+
+    /* tag pill */
+    .tag { display: inline-block; padding: 3px 10px; border: 1.5px solid #0f0f0f; border-radius: 999px; font-size: 0.75rem; font-family: 'DM Mono', monospace; font-weight: 500; transition: background 0.2s, color 0.2s; }
+    .tag:hover { background: #0f0f0f; color: #f5f4f0; }
+
+    /* badge bestseller style */
+    .badge { background: #22c55e; color: #0f0f0f; font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+
+    /* scroll reveal */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* grid dot background */
+    .dot-bg { background-image: radial-gradient(circle, #c8c8c4 1px, transparent 1px); background-size: 24px 24px; }
+
+    /* timeline line */
+    .tl-line { position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: #e2e2e0; }
+    .tl-dot  { width: 12px; height: 12px; border-radius: 50%; background: #22c55e; border: 2.5px solid #f5f4f0; outline: 2px solid #22c55e; flex-shrink: 0; }
+
+    /* skill bar */
+    .skill-bar { height: 6px; background: #e2e2e0; border-radius: 4px; overflow: hidden; }
+    .skill-fill { height: 100%; background: #0f0f0f; border-radius: 4px; transition: width 1s ease; }
+
+    /* mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+  </style>
 </head>
-<body>
-	<!-- Navigation -->
-	<div class="main-nav">
-		<div class="container">
-			<header class="group top-nav">
-				<div class="navigation-toggle" data-tools="navigation-toggle" data-target="#navbar-1">
-				    <span class="logo">ARIEF</span>
-				</div>
-			    <nav id="navbar-1" class="navbar item-nav">
-				    <ul>
-				        <li class="active"><a href="#about">About</a></li>
-				        <li><a href="#experiences">Experiences</a></li>
-				        <li><a href="#achievements">Achievements</a></li>
-				        <li><a href="#skills">Skills</a></li>
-				    </ul>
-				</nav>
-			</header>
-		</div>
-	</div>
+<body class="antialiased">
 
-	<!-- Introduction -->
-	<div class="intro section" id="about">
-		<div class="container">
-			<p>Hi, I’m Arif Handiansyah</p>
-			<div class="units-row units-split wrap">
-				<div class="unit-20">
-					<img src="img/avatar.jpg" alt="Avatar">
-				</div>
-				<div class="unit-80">
-					<h1>Hello,<br><span id="typed"></span></h1>
-				</div>
-				<p>
-					Web Developer & Cloud Enthusiast.
-				</p>
-			</div>
-		</div>
-	</div>
+<!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
+<header class="sticky top-0 z-50 bg-paper/90 backdrop-blur border-b border-line">
+  <nav class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+    <a href="#" class="font-display font-800 text-xl tracking-tight">
+      <span class="text-ink">Dev</span><span class="text-sage">.</span>
+    </a>
+    <!-- Desktop -->
+    <ul class="hidden md:flex items-center gap-8 font-body text-sm font-medium">
+      <li><a href="#about"    class="nav-link text-ink/80 hover:text-ink">Tentang</a></li>
+      <li><a href="#skills"   class="nav-link text-ink/80 hover:text-ink">Keahlian</a></li>
+      <li><a href="#projects" class="nav-link text-ink/80 hover:text-ink">Proyek</a></li>
+      <li><a href="#exp"      class="nav-link text-ink/80 hover:text-ink">Pengalaman</a></li>
+      <li><a href="#contact"  class="nav-link text-ink/80 hover:text-ink">Kontak</a></li>
+    </ul>
+    <a href="#contact" class="hidden md:inline-flex items-center gap-2 bg-ink text-paper text-sm font-medium px-5 py-2.5 rounded-full hover:bg-ink/80 transition-colors">
+      Hire Me
+    </a>
+    <!-- Hamburger -->
+    <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-1" aria-label="menu">
+      <span class="w-6 h-0.5 bg-ink block transition-all"></span>
+      <span class="w-6 h-0.5 bg-ink block transition-all"></span>
+      <span class="w-6 h-0.5 bg-ink block transition-all"></span>
+    </button>
+  </nav>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="flex-col gap-4 px-5 pb-5 border-t border-line bg-paper font-body text-sm">
+    <a href="#about"    class="block pt-3 text-ink/80">Tentang</a>
+    <a href="#skills"   class="block text-ink/80">Keahlian</a>
+    <a href="#projects" class="block text-ink/80">Proyek</a>
+    <a href="#exp"      class="block text-ink/80">Pengalaman</a>
+    <a href="#contact"  class="block text-ink/80">Kontak</a>
+  </div>
+</header>
 
-	<!-- Work Experience -->
-	<div class="work section second" id="experiences">
-		<div class="container">
-			<h1>Work<br>Experiences</h1>
-			<ul class="work-list">
-				<li>2018-now</li>
-				<li><a href="#">Digitak, Digital Data Studio</a></li>
-				<li>Back-end Developer</li>
-			</ul>
-		</div>
-	</div>
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="dot-bg min-h-[92vh] flex items-center relative overflow-hidden">
+  <!-- decorative blobs -->
+  <div class="absolute top-0 right-0 w-80 h-80 bg-sage/10 rounded-full blur-3xl pointer-events-none -translate-y-1/3 translate-x-1/4"></div>
+  <div class="absolute bottom-0 left-0 w-64 h-64 bg-ink/5 rounded-full blur-3xl pointer-events-none"></div>
 
-	<!-- Award & Achievements -->
-	<div class="award section second" id="achievements">
-		<div class="container">
-			<h1>Award &amp;<br>Achievements</h1>
-			<ul class="award-list list-flat">
-				<li>April 2017</li>
-				<li>3rd 3rd winner of sysadmin competition cimahi city</li>
-			</ul>
-		</div>
-	</div>
+  <div class="max-w-6xl mx-auto px-5 py-20 grid md:grid-cols-2 gap-12 items-center w-full">
+    <!-- left -->
+    <div class="space-y-6" style="animation: fadeUp 0.7s ease 0.1s both;">
+      <div class="flex items-center gap-3">
+        <span class="badge">Available for Work</span>
+        <span class="font-mono text-xs text-muted">Backend &amp; DevOps</span>
+      </div>
+      <h1 class="font-display font-extrabold text-5xl md:text-6xl leading-[1.05] tracking-tight">
+        Tingkatkan<br>
+        <span class="relative inline-block">
+          Sistem Anda
+          <svg class="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 300 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 6 Q75 1 150 6 Q225 11 300 6" stroke="#22c55e" stroke-width="2.5" fill="none"/>
+          </svg>
+        </span><br>
+        ke Level Berikutnya
+      </h1>
+      <p class="font-body text-muted text-base leading-relaxed max-w-md">
+        Saya membangun infrastruktur backend yang tangguh dan pipeline DevOps yang efisien — dari API hingga Kubernetes, dari kode hingga produksi.
+      </p>
+      <div class="flex flex-wrap gap-3 pt-2">
+        <a href="#projects" class="inline-flex items-center gap-2 bg-ink text-paper font-medium text-sm px-6 py-3 rounded-full hover:bg-ink/80 transition-colors">
+          Lihat Proyek
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#contact" class="inline-flex items-center gap-2 bg-transparent text-ink border border-ink font-medium text-sm px-6 py-3 rounded-full hover:bg-ink hover:text-paper transition-colors">
+          Hubungi Saya
+        </a>
+      </div>
+      <!-- quick stats -->
+      <div class="flex flex-wrap gap-8 pt-4 border-t border-line">
+        <div>
+          <p class="font-display font-bold text-3xl">4+</p>
+          <p class="font-mono text-xs text-muted mt-0.5">Tahun Pengalaman</p>
+        </div>
+        <div>
+          <p class="font-display font-bold text-3xl">20+</p>
+          <p class="font-mono text-xs text-muted mt-0.5">Proyek Selesai</p>
+        </div>
+        <div>
+          <p class="font-display font-bold text-3xl">99.9%</p>
+          <p class="font-mono text-xs text-muted mt-0.5">Uptime Target</p>
+        </div>
+      </div>
+    </div>
 
-	<!-- Technical Skills -->
-	<div class="skills section second" id="skills">
-		<div class="container">
-			<h1>Technical<br>Skills</h1>
-			<ul class="skill-list list-flat">
-				<li>Web Technology</li>
-				<li>HTML / CSS / PHP / Javascript</li>
-			</ul>
-			<ul class="skill-list list-flat">
-				<li>Database</li>
-				<li>MySQL / Access</li>
-			</ul>
-			<ul class="skill-list list-flat">
-				<li>Framework</li>
-				<li>Laravel / Yii2</li>
-			</ul>
-		</div>
-	</div>
-	
+    <!-- right: profile card -->
+    <div class="flex justify-center md:justify-end" style="animation: fadeUp 0.7s ease 0.3s both;">
+      <div class="relative w-72">
+        <!-- card -->
+        <div class="bg-ink text-paper rounded-3xl p-7 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-sage/10 rounded-full blur-2xl pointer-events-none"></div>
+          <!-- avatar placeholder -->
+          <div class="w-20 h-20 rounded-2xl bg-paper/10 border-2 border-sage/40 flex items-center justify-center mb-5">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="13" r="7" stroke="#22c55e" stroke-width="2"/><path d="M4 32c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#22c55e" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-xl">Nama Kamu</h3>
+          <p class="font-mono text-xs text-paper/50 mt-1">Backend &amp; DevOps Engineer</p>
 
-	<!-- Quote -->
-	<div class="quote">
-		<div class="container text-centered">
-			<h1>fight against the ugliness.</h1>
-		</div>
-	</div>
+          <div class="mt-5 space-y-2">
+            <div class="flex items-center gap-2 bg-paper/8 rounded-xl px-3 py-2">
+              <span class="w-2 h-2 rounded-full bg-sage animate-pulse"></span>
+              <span class="font-mono text-xs text-paper/70">Open to opportunities</span>
+            </div>
+          </div>
 
-	<footer>
-		<div class="container">
-			<div class="units-row">
-			    <div class="unit-50">
-			    	<p>Handcrafted by Afnizar Nur Ghifari</p>
-			    </div>
-			    <div class="unit-50">
-					<ul class="social list-flat right">
-						<li><a href="mailto:forevertkj4@gmail.com"><i class="fa fa-send"></i></a></li>
-						<li><a href="http://twitter.com/arifhnd"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="http://dribbble.com/arifhnd"><i class="fa fa-dribbble"></i></a></li>
-						<li><a href="http://behance.com/arifhnd"><i class="fa fa-behance"></i></a></li>
-					</ul>
-			    </div>
-			</div>
-		</div>
-	</footer>
+          <!-- tech stack icons row -->
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="tag border-paper/20 text-paper/70 hover:bg-paper hover:text-ink">Go</span>
+            <span class="tag border-paper/20 text-paper/70 hover:bg-paper hover:text-ink">Python</span>
+            <span class="tag border-paper/20 text-paper/70 hover:bg-paper hover:text-ink">K8s</span>
+            <span class="tag border-paper/20 text-paper/70 hover:bg-paper hover:text-ink">Docker</span>
+            <span class="tag border-paper/20 text-paper/70 hover:bg-paper hover:text-ink">AWS</span>
+          </div>
+        </div>
+        <!-- floating badge -->
+        <div class="absolute -bottom-4 -right-4 bg-sage text-ink font-display font-bold text-sm px-4 py-2 rounded-2xl shadow-lg">
+          ✓ CI/CD Ready
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-	<!-- Javascript -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/typed.min.js"></script>
-    <script src="js/kube.min.js"></script>
-    <script src="js/site.js"></script>
-    <script>
-		function newTyped(){}$(function(){$("#typed").typed({
-		// Change to edit type effect
-		strings: ["Welcome To My Site"],
+<!-- ═══════════════════════════════ ABOUT ═══════════════════════════════ -->
+<section id="about" class="max-w-6xl mx-auto px-5 py-24">
+  <div class="reveal grid md:grid-cols-2 gap-16 items-center">
+    <div>
+      <p class="font-mono text-xs text-sage font-medium mb-3 tracking-widest uppercase">— Tentang Saya</p>
+      <h2 class="font-display font-extrabold text-4xl md:text-5xl leading-tight mb-6">
+        Saya membangun sistem<br>yang <em class="not-italic text-sage">scale</em>.
+      </h2>
+      <div class="space-y-4 font-body text-muted leading-relaxed text-base">
+        <p>Saya adalah seorang Backend &amp; DevOps Engineer dengan pengalaman lebih dari 4 tahun membangun sistem backend yang skalabel, API yang cepat, serta infrastruktur cloud yang otomatis dan handal.</p>
+        <p>Mulai dari merancang arsitektur microservices, mengotomatiskan pipeline CI/CD, hingga memonitor sistem produksi — saya fokus pada <strong class="text-ink font-semibold">keandalan, efisiensi, dan kecepatan delivery</strong>.</p>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <span class="tag">Microservices</span>
+        <span class="tag">REST &amp; gRPC</span>
+        <span class="tag">Terraform</span>
+        <span class="tag">Monitoring</span>
+        <span class="tag">Security</span>
+      </div>
+    </div>
+    <!-- info grid -->
+    <div class="grid grid-cols-2 gap-4">
+      <div class="bg-ink text-paper rounded-2xl p-6 col-span-2 card-hover">
+        <p class="font-mono text-xs text-paper/40 mb-2">Filosofi Kerja</p>
+        <p class="font-display font-bold text-xl leading-snug">"Automate everything. Measure what matters. Ship with confidence."</p>
+      </div>
+      <div class="bg-white border border-line rounded-2xl p-5 card-hover">
+        <p class="font-display font-bold text-3xl text-sage">AWS</p>
+        <p class="font-mono text-xs text-muted mt-1">Cloud utama</p>
+      </div>
+      <div class="bg-white border border-line rounded-2xl p-5 card-hover">
+        <p class="font-display font-bold text-3xl">K8s</p>
+        <p class="font-mono text-xs text-muted mt-1">Orchestration</p>
+      </div>
+      <div class="bg-white border border-line rounded-2xl p-5 card-hover col-span-2">
+        <p class="font-mono text-xs text-muted mb-2">Lokasi / Remote</p>
+        <p class="font-body font-medium text-sm">📍 Bandung, Indonesia — Remote Friendly</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-		typeSpeed:90,backDelay:700,contentType:"html",loop:!0,resetCallback:function(){newTyped()}}),$(".reset").click(function(){$("#typed").typed("reset")})});
-    </script>
+<!-- ═══════════════════════════════ SKILLS ═══════════════════════════════ -->
+<section id="skills" class="bg-ink text-paper py-24">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal mb-14">
+      <p class="font-mono text-xs text-sage font-medium mb-3 tracking-widest uppercase">— Keahlian</p>
+      <h2 class="font-display font-extrabold text-4xl md:text-5xl">Stack Teknologi</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 reveal">
+
+      <!-- Backend -->
+      <div class="bg-paper/5 border border-paper/10 rounded-3xl p-7 card-hover">
+        <div class="w-10 h-10 rounded-xl bg-sage/20 flex items-center justify-center mb-5">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1.5" stroke="#22c55e" stroke-width="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5" stroke="#22c55e" stroke-width="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5" stroke="#22c55e" stroke-width="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5" stroke="#22c55e" stroke-width="1.5"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-4">Backend Development</h3>
+        <div class="space-y-3">
+          <div>
+            <div class="flex justify-between mb-1"><span class="font-mono text-xs text-paper/60">Go (Golang)</span><span class="font-mono text-xs text-sage">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span class="font-mono text-xs text-paper/60">Python / FastAPI</span><span class="font-mono text-xs text-sage">85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span class="font-mono text-xs text-paper/60">Node.js</span><span class="font-mono text-xs text-sage">75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span class="font-mono text-xs text-paper/60">PostgreSQL / Redis</span><span class="font-mono text-xs text-sage">88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DevOps -->
+      <div class="bg-sage text-ink rounded-3xl p-7 card-hover">
+        <div class="w-10 h-10 rounded-xl bg-ink/10 flex items-center justify-center mb-5">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="#0f0f0f" stroke-width="1.5"/><path d="M10 6v4l2.5 2.5" stroke="#0f0f0f" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-4">DevOps &amp; Cloud</h3>
+        <div class="space-y-3">
+          <div>
+            <div class="flex justify-between mb-1"><span class="font-mono text-xs text-ink/60">Kubernetes</span><span class="font-mono text-xs text-ink font-semibold">85%</span></div>
+            <div class="h-1.5 bg-ink/15 rounded-full overflow-hidden"><div class="h-full bg-ink rounded-full" style="width:85%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span class="font-mono text-xs text-ink/60">Docker</span><span class="font-mono text-xs text-ink font-semibold">95%</span></div>
+            <div class="h-1.5 bg-ink/15 rounded-full overflow-hidden"><div class="h-full bg-ink rounded-full" style="width:95%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span class="font-mono text-xs text-ink/60">AWS / GCP</span><span class="font-mono text-xs text-ink font-semibold">82%</span></div>
+            <div class="h-1.5 bg-ink/15 rounded-full overflow-hidden"><div class="h-full bg-ink rounded-full" style="width:82%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span class="font-mono text-xs text-ink/60">Terraform</span><span class="font-mono text-xs text-ink font-semibold">78%</span></div>
+            <div class="h-1.5 bg-ink/15 rounded-full overflow-hidden"><div class="h-full bg-ink rounded-full" style="width:78%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CI/CD & Monitoring -->
+      <div class="bg-paper/5 border border-paper/10 rounded-3xl p-7 card-hover">
+        <div class="w-10 h-10 rounded-xl bg-sage/20 flex items-center justify-center mb-5">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M10 3l7 7-7 7" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-4">CI/CD &amp; Monitoring</h3>
+        <div class="space-y-3">
+          <div>
+            <div class="flex justify-between mb-1"><span class="font-mono text-xs text-paper/60">GitHub Actions</span><span class="font-mono text-xs text-sage">92%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span class="font-mono text-xs text-paper/60">Jenkins</span><span class="font-mono text-xs text-sage">75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span class="font-mono text-xs text-paper/60">Prometheus / Grafana</span><span class="font-mono text-xs text-sage">80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span class="font-mono text-xs text-paper/60">ELK Stack</span><span class="font-mono text-xs text-sage">72%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ PROJECTS ═══════════════════════════════ -->
+<section id="projects" class="max-w-6xl mx-auto px-5 py-24">
+  <div class="reveal mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <div>
+      <p class="font-mono text-xs text-sage font-medium mb-3 tracking-widest uppercase">— Proyek</p>
+      <h2 class="font-display font-extrabold text-4xl md:text-5xl">Karya Pilihan</h2>
+    </div>
+    <a href="https://github.com" target="_blank" class="inline-flex items-center gap-2 font-mono text-sm text-muted hover:text-ink transition-colors">
+      Lihat semua di GitHub →
+    </a>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+
+    <!-- Project 1 -->
+    <div class="bg-white border border-line rounded-3xl overflow-hidden card-hover group">
+      <div class="bg-ink h-40 flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-sage/5"></div>
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="8" y="8" width="20" height="20" rx="4" stroke="#22c55e" stroke-width="2"/><rect x="32" y="8" width="20" height="20" rx="4" stroke="#22c55e" stroke-width="2"/><rect x="8" y="32" width="20" height="20" rx="4" stroke="#22c55e" stroke-width="2"/><rect x="32" y="32" width="20" height="20" rx="4" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><path d="M18 42l4 4 10-10" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="absolute top-4 right-4 badge">Featured</span>
+      </div>
+      <div class="p-6">
+        <h3 class="font-display font-bold text-lg mb-2">Microservices Platform</h3>
+        <p class="font-body text-muted text-sm leading-relaxed mb-4">Platform e-commerce dengan arsitektur microservices, service mesh Istio, dan auto-scaling di Kubernetes.</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tag">Go</span><span class="tag">K8s</span><span class="tag">Istio</span><span class="tag">PostgreSQL</span>
+        </div>
+        <div class="flex gap-3">
+          <a href="#" class="flex-1 text-center bg-ink text-paper font-mono text-xs py-2.5 rounded-xl hover:bg-ink/80 transition-colors">GitHub</a>
+          <a href="#" class="flex-1 text-center bg-paper border border-line font-mono text-xs py-2.5 rounded-xl hover:border-ink transition-colors">Demo</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="bg-white border border-line rounded-3xl overflow-hidden card-hover">
+      <div class="bg-sage/15 h-40 flex items-center justify-center relative overflow-hidden">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="22" stroke="#0f0f0f" stroke-width="2" stroke-dasharray="4 3"/><path d="M20 30c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10" stroke="#0f0f0f" stroke-width="2" stroke-linecap="round"/><circle cx="30" cy="30" r="4" fill="#0f0f0f"/></svg>
+        <span class="absolute top-4 right-4 bg-ink text-paper font-mono text-xs font-semibold px-3 py-1 rounded-full">DevOps</span>
+      </div>
+      <div class="p-6">
+        <h3 class="font-display font-bold text-lg mb-2">CI/CD Pipeline Automation</h3>
+        <p class="font-body text-muted text-sm leading-relaxed mb-4">Pipeline otomatis dari commit hingga production dengan GitHub Actions, testing, security scan, dan notifikasi Slack.</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tag">GitHub Actions</span><span class="tag">Docker</span><span class="tag">Terraform</span>
+        </div>
+        <div class="flex gap-3">
+          <a href="#" class="flex-1 text-center bg-ink text-paper font-mono text-xs py-2.5 rounded-xl hover:bg-ink/80 transition-colors">GitHub</a>
+          <a href="#" class="flex-1 text-center bg-paper border border-line font-mono text-xs py-2.5 rounded-xl hover:border-ink transition-colors">Docs</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="bg-white border border-line rounded-3xl overflow-hidden card-hover">
+      <div class="bg-ink/5 h-40 flex items-center justify-center relative overflow-hidden">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><path d="M10 50V30l20-20 20 20v20H36V38h-12v12H10z" stroke="#0f0f0f" stroke-width="2" stroke-linejoin="round"/><rect x="24" y="42" width="12" height="8" rx="1" stroke="#22c55e" stroke-width="2"/></svg>
+        <span class="absolute top-4 right-4 bg-sage text-ink font-mono text-xs font-semibold px-3 py-1 rounded-full">Open Source</span>
+      </div>
+      <div class="p-6">
+        <h3 class="font-display font-bold text-lg mb-2">Observability Stack</h3>
+        <p class="font-body text-muted text-sm leading-relaxed mb-4">Self-hosted monitoring stack dengan Prometheus, Grafana, Loki, dan alerting otomatis via PagerDuty.</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Loki</span>
+        </div>
+        <div class="flex gap-3">
+          <a href="#" class="flex-1 text-center bg-ink text-paper font-mono text-xs py-2.5 rounded-xl hover:bg-ink/80 transition-colors">GitHub</a>
+          <a href="#" class="flex-1 text-center bg-paper border border-line font-mono text-xs py-2.5 rounded-xl hover:border-ink transition-colors">Demo</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ EXPERIENCE ═══════════════════════════════ -->
+<section id="exp" class="bg-paper border-t border-line py-24">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal mb-14">
+      <p class="font-mono text-xs text-sage font-medium mb-3 tracking-widest uppercase">— Pengalaman</p>
+      <h2 class="font-display font-extrabold text-4xl md:text-5xl">Perjalanan Karir</h2>
+    </div>
+
+    <div class="reveal relative pl-10 space-y-10">
+      <div class="tl-line"></div>
+
+      <!-- Job 1 -->
+      <div class="relative">
+        <div class="absolute -left-[27px] top-1.5 tl-dot"></div>
+        <div class="bg-white border border-line rounded-2xl p-7 card-hover">
+          <div class="flex flex-col md:flex-row md:items-start justify-between gap-3 mb-3">
+            <div>
+              <h3 class="font-display font-bold text-lg">Senior Backend Engineer</h3>
+              <p class="font-body text-muted text-sm mt-0.5">PT. Teknologi Maju Indonesia</p>
+            </div>
+            <span class="font-mono text-xs text-sage bg-sage/10 px-3 py-1 rounded-full self-start whitespace-nowrap">2022 — Sekarang</span>
+          </div>
+          <p class="font-body text-muted text-sm leading-relaxed mb-4">Memimpin tim backend 5 orang untuk membangun platform payment gateway yang menangani 10K+ transaksi/hari. Migrasi monolith ke microservices dengan zero downtime.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">Go</span><span class="tag">Kubernetes</span><span class="tag">PostgreSQL</span><span class="tag">AWS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 2 -->
+      <div class="relative">
+        <div class="absolute -left-[27px] top-1.5 tl-dot" style="background:#e2e2e0; outline-color:#e2e2e0;"></div>
+        <div class="bg-white border border-line rounded-2xl p-7 card-hover">
+          <div class="flex flex-col md:flex-row md:items-start justify-between gap-3 mb-3">
+            <div>
+              <h3 class="font-display font-bold text-lg">DevOps Engineer</h3>
+              <p class="font-body text-muted text-sm mt-0.5">Startup Fintech Bandung</p>
+            </div>
+            <span class="font-mono text-xs text-muted bg-ink/5 px-3 py-1 rounded-full self-start whitespace-nowrap">2020 — 2022</span>
+          </div>
+          <p class="font-body text-muted text-sm leading-relaxed mb-4">Membangun infrastruktur cloud dari nol di AWS, implementasi CI/CD pipeline, dan sistem monitoring. Berhasil mengurangi deployment time dari 2 jam menjadi 8 menit.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">Docker</span><span class="tag">Jenkins</span><span class="tag">Terraform</span><span class="tag">AWS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 3 -->
+      <div class="relative">
+        <div class="absolute -left-[27px] top-1.5 tl-dot" style="background:#e2e2e0; outline-color:#e2e2e0;"></div>
+        <div class="bg-white border border-line rounded-2xl p-7 card-hover">
+          <div class="flex flex-col md:flex-row md:items-start justify-between gap-3 mb-3">
+            <div>
+              <h3 class="font-display font-bold text-lg">Backend Developer (Junior)</h3>
+              <p class="font-body text-muted text-sm mt-0.5">Freelance / Agency</p>
+            </div>
+            <span class="font-mono text-xs text-muted bg-ink/5 px-3 py-1 rounded-full self-start whitespace-nowrap">2019 — 2020</span>
+          </div>
+          <p class="font-body text-muted text-sm leading-relaxed mb-4">Mengembangkan REST API untuk berbagai klien menggunakan Python dan Node.js. Belajar dasar-dasar deployment dan pengelolaan server Linux.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">Python</span><span class="tag">Node.js</span><span class="tag">MySQL</span><span class="tag">Linux</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
+<section id="contact" class="bg-ink text-paper py-24">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal max-w-2xl mx-auto text-center">
+      <p class="font-mono text-xs text-sage font-medium mb-4 tracking-widest uppercase">— Kontak</p>
+      <h2 class="font-display font-extrabold text-4xl md:text-6xl leading-tight mb-6">
+        Mari Bekerja<br>Sama!
+      </h2>
+      <p class="font-body text-paper/50 text-base leading-relaxed mb-10">
+        Punya proyek menarik atau ingin berdiskusi soal infrastruktur? Saya selalu senang mendengar ide baru.
+      </p>
+      <a href="mailto:hello@namakamu.dev" class="inline-flex items-center gap-3 bg-sage text-ink font-display font-bold text-lg px-8 py-4 rounded-full hover:bg-sage/80 transition-colors mb-12">
+        hello@namakamu.dev
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <!-- social links -->
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a href="https://github.com" target="_blank" class="flex items-center gap-2 bg-paper/5 border border-paper/10 px-5 py-2.5 rounded-full font-mono text-sm text-paper/70 hover:bg-paper/10 hover:text-paper transition-colors">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="flex items-center gap-2 bg-paper/5 border border-paper/10 px-5 py-2.5 rounded-full font-mono text-sm text-paper/70 hover:bg-paper/10 hover:text-paper transition-colors">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://t.me/namakamu" target="_blank" class="flex items-center gap-2 bg-paper/5 border border-paper/10 px-5 py-2.5 rounded-full font-mono text-sm text-paper/70 hover:bg-paper/10 hover:text-paper transition-colors">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"/></svg>
+          Telegram
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer class="bg-ink border-t border-paper/10 py-6">
+  <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-3">
+    <p class="font-mono text-xs text-paper/30">© 2025 Nama Kamu. All rights reserved.</p>
+    <p class="font-mono text-xs text-paper/30">Built with HTML + Tailwind CSS</p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════ JS ═══════════════════════════════ -->
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Skill bars animate on scroll
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.skill-fill').forEach(bar => {
+          bar.style.width = bar.style.width; // trigger
+        });
+        barObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('#skills').forEach(el => barObserver.observe(el));
+</script>
+
 </body>
 </html>
